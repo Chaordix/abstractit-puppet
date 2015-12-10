@@ -24,7 +24,7 @@
 # @param custom_facts [Hash] Default: undef
 #   A hash of custom facts to setup using the ::puppet::facts define.
 # @param enabled [Boolean] Default: true
-#   Used to determine if the puppet agent should be running
+#   Used to determine if the puppet agent should be enabled to start at boot
 # @param enable_devel_repo [Boolean] Default: false
 #   This param will replace `devel_repo` in 2.x.
 #   It conveys to puppet::repo::apt whether or not to add the devel apt repo source.
@@ -35,6 +35,8 @@
 # @param enable_repo [Boolean] Default: true
 #   if `manage_repos` is true, this determines whether or not the puppetlabs' repository should be present.
 #   *This is not consulted in any way if `manage_repos` is false*
+# @param ensure [Boolean] Default: undef
+#   Used to determine if the puppet agent should be running
 # @param environment [String] Default: 'production'
 #   Sets the puppet environment
 # @param facter_version [String] Default: 'installed'
@@ -82,6 +84,7 @@ class puppet::profile::agent (
   $enable_devel_repo              = false,
   $enable_mechanism               = 'service',
   $enable_repo                    = true,
+  $ensure                         = undef,
   $environment                    = 'production',
   $facter_version                 = 'installed',
   $hiera_version                  = 'installed',
@@ -109,6 +112,7 @@ class puppet::profile::agent (
     enable_devel_repo              => $enable_devel_repo,
     enable_mechanism               => $enable_mechanism,
     enable_repo                    => $enable_repo,
+    ensure                         => $ensure
     environment                    => $environment,
     facter_version                 => $facter_version,
     hiera_version                  => $hiera_version,

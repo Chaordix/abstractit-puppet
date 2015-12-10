@@ -47,7 +47,7 @@ class puppet::agent {
   }
 
   service { 'puppet':
-    ensure  => $service_enablement,
+    ensure  => $::puppet::ensure,
     enable  => $service_enablement,
     require => Class['puppet::config']
   }

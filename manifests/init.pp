@@ -28,7 +28,7 @@
 # @param devel_repo [Boolean] Default: false
 #   deprecated Use enable_devel_repo instead
 # @param enabled [Boolean] Default: true
-#   Used to determine if the puppet agent should be running
+#   Used to determine if the puppet agent should be enabled to start at boot
 # @param enable_devel_repo [Boolean] Default: false
 #   This param will replace `devel_repo` in 2.x.
 #   It conveys to puppet::repo::apt whether or not to add the devel apt repo source.
@@ -39,6 +39,8 @@
 # @param enable_repo [Boolean] Default: true
 #   if `manage_repos` is true, this determines whether or not the puppetlabs' repository should be present.
 #   *This is not consulted in any way if `manage_repos` is false*
+# @param ensure [Boolean] Default: undef
+#   Used to determine if the puppet agent should be running
 # @param environment [String] Default: 'production'
 #   Sets the puppet environment
 # @param facter_version [String] Default: 'installed'
@@ -86,6 +88,7 @@ class puppet (
   $enable_devel_repo              = false,
   $enable_mechanism               = 'service',
   $enable_repo                    = true,
+  $ensure                         = undef,
   $environment                    = 'production',
   $facter_version                 = 'installed',
   $hiera_version                  = 'installed',

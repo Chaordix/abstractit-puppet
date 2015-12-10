@@ -112,7 +112,7 @@ class puppet::profile::agent (
     enable_devel_repo              => $enable_devel_repo,
     enable_mechanism               => $enable_mechanism,
     enable_repo                    => $enable_repo,
-    ensure                         => $ensure
+    ensure                         => $ensure,
     environment                    => $environment,
     facter_version                 => $facter_version,
     hiera_version                  => $hiera_version,
